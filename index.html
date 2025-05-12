@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Kontrol LED ESP32</title>
+  <title>Kontrol LED</title>
 </head>
 <body>
-  <h1>Kontrol LED Internal ESP32</h1>
-  <button onclick="fetch('/on')">HIDUPKAN</button>
-  <button onclick="fetch('/off')">MATIKAN</button>
+  <h1>Kontrol LED lewat Google Sheet</h1>
+  <button onclick="kirim('ON')">LED ON</button>
+  <button onclick="kirim('OFF')">LED OFF</button>
+
+  <script>
+    function kirim(status) {
+      fetch('https://script.google.com/macros/s/AKfycbwAkTLpuNrUSeDmtfVKoMX3Ti_pvsHiW0y_AeR9FHEbUA632xex8c0Clwa2LhbNLLuz3A/exec' + status)
+        .then(r => r.text())
+        .then(alert);
+    }
+  </script>
 </body>
 </html>
